@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div style="text-align:center"></div>
+<div>
+<div style="text-align:center">
+<pre style="font-size:11px;background-color:rgb(128,128,128);margin-bottom:0px;margin-top:0px"><b><font face="courier new, monospace" size="6">About the script </font></b></pre>
+</div>
+<div></div>
+<p><font face="courier new, monospace" size="3">DonationSystem by <a href="https://steamcommunity.com/profiles/76561198000622892">H3xCat</a>&nbsp;</font><span style="font-family:courier new,monospace;font-size:medium;background-color:transparent">allows server owners to have automated donation services in their servers.</span></p>
+</div>
+<div>
+<div>
+<pre style="background-color:rgb(128,128,128);text-align:center;margin-bottom:0px;margin-top:0px"><font face="courier new, monospace" size="6"><b>config.php syntax</b></font></pre>
+</div>
+<div></div>
+<p><font face="courier new, monospace">The config.php file have php syntax and you must follow them while modifying the file. The file mostly consist of some variables and multi-dimensional arrays.</font></p>
+<p><font face="courier new, monospace"><b>When writing inside array, each value inside array(including inner arrays such as 'execute' array in packages) must be&nbsp;separated&nbsp;by comma.</b></font></p>
+<p><font face="courier new, monospace">I also recommend using</font><span style="font-size:10pt;font-family:courier new,monospace">&nbsp;</span><a href="http://notepad-plus-plus.org/" style="font-size:10pt;font-family:courier new,monospace">Notepad++</a>&nbsp;and use spacing as I do in examples bellow, it will be easier to track where arrays start and end<span style="font-size:10pt;font-family:courier new,monospace">.</span></p>
+<div>
+<pre style="font-size:11px;background-color:rgb(128,128,128);text-align:center;margin-bottom:0px;margin-top:0px"><b><font face="courier new, monospace" size="6">Setup: Web Server</font></b></pre>
+</div>
+<div></div>
+<p><font face="courier new, monospace">All modifications should be done in config.php file.</font></p>
+
+        
+<ol>
+            <li><font face="courier new, monospace">Extract all files and folders from "web" folder to "donate" folder(create one if needed) in your website( example.com<b>/donate/</b> )</font></li>
+			<li><font face="courier new, monospace">Edit config.cfg.</font></li>
+			
+<ol>
+				<li><font face="courier new, monospace">Database</font></li>
+				
+<ol>
+					
+<table border="1">
+					
+<tbody>
+<tr>
+						
+<td><font face="courier new, monospace">DB_HOST</font></td>
+						
+<td><font face="courier new, monospace">MySQL Server IP Address. If you don't know what to put, then nether do I, please contact your webhost admin for that info.</font></td>
+					</tr>
+					
+<tr>
+						
+<td><font face="courier new, monospace">DB_USERNAME</font></td>
+						
+<td><font face="courier new, monospace">MySQL Server Username</font></td>
+					</tr>
+					
+<tr>
+						
+<td><font face="courier new, monospace">DB_PASSWORD</font></td>
+						
+<td><font face="courier new, monospace">MySQL Server Password</font></td>
+					</tr>
+					
+<tr>
+						
+<td><font face="courier new, monospace">DB_DATABASE</font></td>
+						
+<td><font face="courier new, monospace">MySQL Server Database</font></td>
+</tr>
+</tbody>
+</table>
+</ol>
+<li><font face="courier new, monospace">Paypal</font></li>
+				
+<ol>
+					
+<table border="1">
+					
+<tbody>
+<tr>
+						
+<td style="width:136px;height:16px"><font face="courier new, monospace">PAYPAL_CURRENCY</font></td>
+						
+<td style="width:939px;height:16px"><font face="courier new, monospace">Currency that you're going to use on the system (default USD).</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:136px;height:16px"><font face="courier new, monospace">PAYPAL_SANDBOX</font></td>
+						
+<td style="width:939px;height:16px"><font face="courier new, monospace">Set to true to test your donation system with paypal sandbox account. When done testing set it to false.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:136px;height:16px"><font face="courier new, monospace">PAYPAL_ID</font></td>
+						
+<td style="width:939px;height:16px"><font face="courier new, monospace">Put your current paypal id(email).<br>
+</font></td>
+					</tr>
+<tr>
+<td style="width:136px;height:32px"><font face="courier new, monospace">PAYPAL_ID_SANDBOX</font></td>
+<td style="width:939px;height:32px"><font face="courier new, monospace">Put sandbox paypal id(email). It is used to test the system without spending real money. To create sandbox accounts you have to go <a href="https://developer.paypal.com/webapps/developer/applications/accounts">here</a>. You must create two&nbsp;accounts, one is seller other is buyer</font></td>
+</tr>
+					</tbody>
+</table>
+				</ol>
+				<li><font face="courier new, monospace">Steam API</font></li>
+<ol>
+<table border="1">
+<tbody>
+<tr>
+<td><font face="courier new, monospace">STEAM_API</font></td>
+<td><font face="courier new, monospace"><a href="http://steamcommunity.com/dev/apikey">Go here</a>&nbsp;to generate your Steam API Key(use domain name where the donation system is located such as "example.com").</font></td>
+</tr>
+</tbody>
+</table>
+</ol>
+<li><font face="courier new, monospace">Donation System URL</font></li>
+<ol>
+<table border="1">
+<tbody>
+<tr>
+<td><font face="courier new, monospace">DONATE_URL</font></td>
+<td><font face="courier new, monospace">Write address to the donation system ("http://example.com/donate/").<br>
+Don't forget to include http:// and don't include file such as index.php, it must be folder.<br>
+If you use SSL protocol, use https://</font></td>
+</tr>
+</tbody>
+</table>
+</ol>
+<li><span style="font-family:courier new,monospace;font-size:10pt">OpenID</span></li>
+<ol>
+<table border="1">
+<tbody>
+<tr>
+<td><font face="courier new, monospace">OPENID_MODE</font></td>
+<td><font face="courier new, monospace">You should leave this alone. Only try switching if steam sign in doesn't work. If nether 'curl' or 'streams' work,<br>
+contact your web host admin to fix curl.</font></td>
+</tr>
+</tbody>
+</table>
+</ol>
+<li><span style="font-family:courier new,monospace;font-size:10pt;background-color:transparent">Games</span></li>
+				
+<ol><font face="courier new, monospace">
+					Default config file is configured for one game.<br>
+					If you wish to add new game you can copy "gmod" array and paste new array and change GameId. Each server must be separated by comma.<br>
+					
+					
+</font>
+<div style="display:block;text-align:left"><a href="https://sites.google.com/site/donationsystemreadme/home/games.png?attredirects=0" imageanchor="1"></a></div>
+<font face="courier new, monospace">
+<div style="display:block;text-align:left"><a href="https://sites.google.com/site/donationsystemreadme/home/games.png?attredirects=0" imageanchor="1"><img border="0" src="https://sites.google.com/site/donationsystemreadme/home/games.png"></a></div>
+					
+					Each game must have their own GameId, you can give any valid id you want but they must be unique. <b>In order for GameID to be valid it must</b></font></ol>
+<ol><font face="courier new, monospace"><b>be lower case, no special symbols, and no spaces.</b><br>
+<br>
+					Inside array you should find four values.<br>
+					
+					
+</font>
+<table border="1">
+					
+<tbody>
+<tr>
+						
+<td style="width:56px;height:16px"><font face="courier new, monospace">name</font></td>
+						
+<td style="width:1025px;height:16px"><font face="courier new, monospace">Title of your game.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:56px;height:16px"><font face="courier new, monospace">icon</font></td>
+						
+<td style="width:1025px;height:16px"><font face="courier new, monospace">Icon that is shown next to title.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:56px;height:16px"><font face="courier new, monospace">display</font></td>
+						
+<td style="width:1025px;height:16px"><font face="courier new, monospace">If this set to false it won't show up in Games section.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:56px;height:16px"><font face="courier new, monospace">servers</font></td>
+						
+<td style="width:1025px;height:16px"><font face="courier new, monospace">List of servers that is shown for this specific game. You must use ServerId. When adding, write inside array.<br>
+					</font></td>
+</tr>
+					</tbody>
+</table>
+				</ol>
+				<li><font face="courier new, monospace">Servers</font></li>
+				
+<ol><font face="courier new, monospace">
+					Default config file is configured for two server("darkrp" and "ttt").<br>
+					If you wish to add new game you can copy "darkrp" or "ttt" array and paste new array and change ServerId. Each server must be separated&nbsp;</font></ol>
+<ol><font face="courier new, monospace">by comma.<br>
+					
+					
+</font>
+<div style="display:block;text-align:left"><a href="https://sites.google.com/site/donationsystemreadme/home/servers.png?attredirects=0" imageanchor="1"></a></div>
+<font face="courier new, monospace">
+<div style="display:block;text-align:left"><a href="https://sites.google.com/site/donationsystemreadme/home/servers.png?attredirects=0" imageanchor="1"><img border="0" src="https://sites.google.com/site/donationsystemreadme/home/servers.png"></a></div>
+					
+					Each server must have their own ServerId, you can give any id you want but they must be unique and valid same as in Games array for GameID.<br>
+<br>
+					Inside array you should find four values.<br>
+					
+</font>
+<table border="1">
+					
+<tbody>
+<tr>
+						
+<td style="width:72px;height:16px"><font face="courier new, monospace">name</font></td>
+						
+<td style="width:1003px;height:16px"><font face="courier new, monospace">Title of your server.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:72px;height:16px"><font face="courier new, monospace">icon</font></td>
+						
+<td style="width:1003px;height:16px"><font face="courier new, monospace">Icon that is shown next to title.</font></td>
+</tr>
+					
+<tr>
+						
+<td style="width:72px;height:16px"><font face="courier new, monospace">packages</font></td>
+						
+<td style="width:1003px;height:16px"><font face="courier new, monospace">List of packages that is shown for this specific server. You must use PackageId. When adding, write inside array.<br>
+						</font></td>
+					</tr>
+					</tbody>
+</table>
+				</ol>
+				<li><font face="courier new, monospace">Packages</font></li>
+				
+<ol><font face="courier new, monospace">In default config file there is already six packages array for darkrp and ttt servers, feel free to change modify if needed.<br>
+<br>
+					Package id's must be numbers only. If you wish to add new package you can copy first package and paste new and change PackageId.&nbsp;</font></ol>
+<ol><font face="courier new, monospace">Don't forget to separate packages with comma.<br>
+					
+					
+					Each package must have their own PackageId that consist only whole numbers, you can give any id you want but they must be unique.<br>
+<br>
+					Inside array you should find five values.<br>
+					
+</font>
+<table border="1">
+					
+<tbody>
+<tr>
+						
+<td style="width:88px;height:16px"><font face="courier new, monospace">title</font></td>
+						
+<td style="width:987px;height:16px"><font face="courier new, monospace">This title is shown when you're in Packages section. You can also apply html tags if you want.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:88px;height:16px"><font face="courier new, monospace">buytitle</font></td>
+						
+<td style="width:987px;height:16px"><font face="courier new, monospace">This title is shown to user who's in order.php or paypal checkout website.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:88px;height:16px"><font face="courier new, monospace">description</font></td>
+						
+<td style="width:987px;height:16px"><font face="courier new, monospace">This is where you write your package description. I recommend using html tags when writing descriptions.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:88px;height:16px"><font face="courier new, monospace">price</font></td>
+						
+<td style="width:987px;height:16px"><font face="courier new, monospace">Package price. Number only, no currency symbols.</font></td>
+					</tr>
+					
+<tr>
+						
+<td style="width:88px;height:224px"><font face="courier new, monospace">execute</font></td>
+						
+<td style="width:987px;height:224px"><font face="courier new, monospace">This is probably most important part of donation system. This is where you specify what and when you want to execute certain commands when someone donates.
+							
+							In execute array it's where you define&nbsp;in what servers the commands are going to be executed.
+							Inside those server arrays there are other 2 arrays
+							
+</font>
+<table border="1">
+							
+<tbody>
+<tr>
+								
+<td style="width:56px;height:48px"><font face="courier new, monospace">online</font></td>
+								
+<td style="width:908px;height:48px"><font face="courier new, monospace">When you add commands to online array, it's going to activate commands once player is&nbsp;connected to database. It's recommended to add commands to online array because more&nbsp;commands are supported in this array like pointshop_points and darkrp_money</font></td>
+							</tr>
+							
+<tr>
+								
+<td style="width:56px;height:32px"><font face="courier new, monospace">offline</font></td>
+								
+<td style="width:908px;height:32px"><font face="courier new, monospace">When you add commands to offline array, it's going to activate commands instantly(unless delay is other than 0) after someone&nbsp;donates no matter if player is on server or not.</font></td>
+							</tr>
+							</tbody>
+</table>
+							<font face="courier new, monospace"><br>
+							Inside online/offline array you should notice there are arrays that have numbers in front of them,&nbsp;those numbers are delays when array of commands is going to be executed after certain amount&nbsp;of seconds. Put 0 if you want instant.
+							Inside those arrays you specify what commands you want&nbsp;to run, please go to "Execute Commands" section of readme file for the list of commands. 
+							
+						<br>
+<br>
+You can add and remove arrays inside offline/online arrays.<br>
+It could be:<br>
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tbody>
+<tr>
+<td style="width:708px;height:15px">"online" =&gt; array() //You're not required to include online array at all if its empty.</td>
+</tr>
+</tbody>
+</table>
+or<br>
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tbody>
+<tr>
+<td style="width:178px;height:18px">"online" =&gt; array(<br>
+<span>&nbsp; &nbsp; 0 =&gt; array(<br>
+<span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp; ...</span><br>
+</span><span>&nbsp;&nbsp; &nbsp;</span>)</span><br>
+)</td>
+</tr>
+</tbody>
+</table>
+or<br>
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tbody>
+<tr>
+<td style="width:178px;height:18px">"online" =&gt; array(<br>
+<span>&nbsp; &nbsp;&nbsp;</span>0 =&gt; array(<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ...<br>
+&nbsp;&nbsp; &nbsp;),<br>
+<span>&nbsp;&nbsp; &nbsp;</span>86400*30 =&gt; array(<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ...<br>
+&nbsp;&nbsp; &nbsp;)<br>
+)</td>
+</tr>
+</tbody>
+</table>
+or<br>
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tbody>
+<tr>
+<td style="width:178px;height:18px">"online" =&gt; array(<br>
+<span>&nbsp; &nbsp;&nbsp;</span>0 =&gt; array(<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ...<br>
+&nbsp;&nbsp; &nbsp;),<br>
+<span>&nbsp;&nbsp; &nbsp;</span>86400*30 =&gt; array(<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ...<br>
+&nbsp;&nbsp; &nbsp;),<br>
+<span>&nbsp; &nbsp;&nbsp;</span>86400*60 =&gt; array(<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ...<br>
+&nbsp;&nbsp; &nbsp;)<br>
+)</td>
+</tr>
+</tbody>
+</table>
+<br>
+</font></td>
+					</tr>
+<tr>
+<td>&nbsp;checkout</td>
+<td>File where checkout is processed, you should leave this to "source.php".</td>
+</tr>
+<tr>
+<td>&nbsp;paypal_id</td>
+<td>(Optional) Specify to what paypal account should money be sent. If nothing specified, it will use PAYPAL_ID instead.<br>
+'paypal_id' =&gt; "email@example.com" &nbsp;</td>
+</tr>
+					</tbody>
+</table>
+<div style="display:block;text-align:left">
+<div style="display:block;text-align:left"><a href="https://sites.google.com/site/donationsystemreadme/home/packages.png?attredirects=0" imageanchor="1"><img border="0" src="https://sites.google.com/site/donationsystemreadme/home/packages.png"></a></div>
+<br>
+</div>
+<font face="courier new, monospace"><br>
+					</font></ol>
+				<font face="courier new, monospace"><br>
+				
+				
+			</font></ol>
+			<li><font face="courier new, monospace">After editing config.php, edit tos.html to add your own Terms of Service.</font></li>
+</ol>
+<div>
+<pre style="font-size:11px;background-color:rgb(128,128,128);text-align:center;margin-bottom:0px;margin-top:0px"><b><font face="courier new, monospace" size="6">Setup: Game Server</font></b></pre>
+</div>
+</div>
+    
+<div>
+
+
+        
+<ol>
+            <li><font face="courier new, monospace">Extract donation_system.lua to "garrysmod/lua/autorun/server/" folder.</font></li>
+            <li><font face="courier new, monospace">Open donation_system.lua and fill folowing values</font></li>
+<table border="1">
+<tbody>
+<tr>
+<td><font face="courier new, monospace">DB_HOST</font></td>
+<td><font face="courier new, monospace">MySQL Server IP Address. If you don't know what to put, then nether do I, please contact your webhost admin for that info.</font></td>
+</tr>
+<tr>
+<td><font face="courier new, monospace">DB_USERNAME</font></td>
+<td><span style="font-family:courier new,monospace">MySQL Server Username</span></td>
+</tr>
+<tr>
+<td><font face="courier new, monospace">DB_PASSWORD</font></td>
+<td><span style="font-family:courier new,monospace">MySQL Server Password</span></td>
+</tr>
+<tr>
+<td><font face="courier new, monospace">DB_DATABASE</font></td>
+<td><span style="font-family:courier new,monospace">MySQL Server Database. <br>
+<font color="#ff0000"><br>
+Make sure external connection is allowed for this database. If the system fails to connect and you're sure<br>
+information is correct, contact webhost admin to resolve this.</font></span></td>
+</tr>
+<tr>
+<td><font face="courier new, monospace">SERVER_ID</font></td>
+<td><font face="courier new, monospace">This should match ServerID that you specified in config.php for server.&nbsp;<br>
+</font>
+<div><a href="https://sites.google.com/site/donationsystemreadme/home/linking.png?attredirects=0" imageanchor="1"></a></div>
+<font face="courier new, monospace">
+<div><a href="https://sites.google.com/site/donationsystemreadme/home/lua.png?attredirects=0" imageanchor="1"><img border="0" src="https://sites.google.com/site/donationsystemreadme/home/lua.png"></a></div>
+(Don't mind DONATE_URL and LINK_AUTH_KEY variables in picture as they were removed in 4.0 )</font></td>
+</tr>
+</tbody>
+</table>
+<br>
+<li><font face="courier new, monospace">This DonationSystem requires MySQLOO v8 module to be installed on the server. To install it you have to extract gmsv_mysqloo_win32.dll/</font><span style="font-family:courier new,monospace">gmsv_mysqloo_linux.dll(you can add both if you want) to "garrysmod<b>/lua/bin/</b>" folder(create folder if folder doesn't exist). You also need to extract libmysql.dll/libmysql.so.18 to directory where sever executable is located (often called srcds.exe). Some game hosting services would rename executable or hide it from you, if that's your case then you would need to contact them and get assistance installing libmysql file.</span></li>
+</ol>
+<ol>
+</ol>
+<div>
+<pre style="font-size:11px;background-color:rgb(128,128,128);text-align:center;margin-bottom:0px;margin-top:0px"><b><font face="courier new, monospace" size="6">Execute Commands</font></b></pre>
+</div>
+</div>
+        
+<div><font face="courier new, monospace">
+		When adding new commands, seperate them by comma(don't put comma at the last one)
+		
+</font>
+<h2><font face="courier new, monospace">Commands</font></h2>
+		
+<pre><font face="courier new, monospace">		</font><table border="1">
+		<tbody><tr>
+			<th style="width:128px;height:16px"><font face="courier new, monospace">Command</font></th>
+			<th style="width:520px;height:16px"><font face="courier new, monospace">Description</font></th>
+			<th style="width:456px;height:16px"><font face="courier new, monospace">Example</font></th>
+			<th style="width:48px;height:16px"><font face="courier new, monospace">Online</font></th>
+			<th style="width:56px;height:16px"><font face="courier new, monospace">Offline</font></th>
+		</tr>
+		<tr>
+			<td style="width:128px;height:43px"><font face="courier new, monospace">darkrp_money</font></td>
+			<td style="width:520px;height:43px"><font face="courier new, monospace">Gives user certain amount of darkrp money</font></td>
+			<td style="width:456px;height:43px"><pre><font face="courier new, monospace">array("darkrp_money", 1000)</font></pre></td>
+			<td style="width:48px;height:43px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:43px"><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		<tr>
+			<td style="width:128px;height:43px"><font face="courier new, monospace">pointshop_points</font></td>
+			<td style="width:520px;height:43px"><font face="courier new, monospace">Gives user certain amount of pointshop points</font></td>
+			<td style="width:456px;height:43px"><pre><font face="courier new, monospace">array("pointshop_points", 1000)</font></pre></td>
+			<td style="width:48px;height:43px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:43px"><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		<tr>
+			<td style="width:128px;height:64px"><font face="courier new, monospace">print</font></td>
+			<td style="width:520px;height:64px"><font face="courier new, monospace">Prints message to the buyer, you can set 
+colours of text by adding array(r,g,b)
+to the array and you are also able to add
+multiple of them</font></td>
+			<td style="width:456px;height:64px"><pre><font face="courier new, monospace">array("print", array(255,0,0) ,
+"Thank you for donating!" )</font></pre></td>
+			<td style="width:48px;height:64px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:64px"><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		<tr>
+			<td style="width:128px;height:64px"><font face="courier new, monospace">broadcast</font></td>
+			<td style="width:520px;height:64px"><font face="courier new, monospace">Prints message to everyone in server, you can
+set colours of text by adding array(r,g,b) to
+the array and you are also able to add multiple
+ of them</font></td>
+			<td style="width:456px;height:64px"><pre><font face="courier new, monospace">array("print", array(255,0,0) ,
+"%name% have donated!" )</font></pre></td>
+			<td style="width:48px;height:64px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:64px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td style="width:128px;height:64px"><font face="courier new, monospace">broadcast_omit</font></td>
+			<td style="width:520px;height:64px"><font face="courier new, monospace">Prints message to everyone in server except the
+buyer, you can set colours of text by adding 
+array(r,g,b) to the array and you are also able
+ to add multiple of them</font></td>
+			<td style="width:456px;height:64px"><pre><font face="courier new, monospace">array( "print",array(255,0,0) ,
+"%name% have donated!" )</font></pre></td>
+			<td style="width:48px;height:64px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:64px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td style="width:128px;height:251px"><font face="courier new, monospace">lua</font></td>
+			<td style="width:520px;height:251px"><font face="courier new, monospace">Runs lua in server, use PLAYER(Entity) or STEAMID(String)
+to apply to buyer.</font></td>
+			<td style="width:456px;height:251px">array("lua","<br><span>&nbsp;&nbsp; &nbsp;</span>if PLAYER:IsUserGroup(\"vip\") then<br><span><span>&nbsp;&nbsp; &nbsp;</span>&nbsp;&nbsp; &nbsp;</span>ULib.ucl.addUser(STEAMID,{},{},\"vip-donator\")
+<span>&nbsp;&nbsp; &nbsp;</span>elseif PLAYER:IsUserGroup(\"admin\") then<br><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>ULib.ucl.addUser(STEAMID,{},{},\"admin-donator\")<br><span>&nbsp;&nbsp; &nbsp;</span>elseif PLAYER:IsUserGroup(\"superadmin\") then<br><span><span>&nbsp;&nbsp; &nbsp;</span>&nbsp;&nbsp; &nbsp;</span>ULib.ucl.addUser(STEAMID,{},{},\"superadmin-donator\")<br><span>&nbsp;&nbsp; &nbsp;</span>else<br><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>ULib.ucl.addUser(STEAMID,{},{},\"donator\")<br><span>&nbsp;&nbsp; &nbsp;</span>end<br>")
+
+<pre><font color="#ff0000"><font face="courier new, monospace"><b>N</b></font>ote: I use escape symbol (\) to escape strings <br>when I write " inside string.</font><br></pre></td>
+			<td style="width:48px;height:251px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:251px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td style="width:128px;height:59px"><font face="courier new, monospace">sv_cmd</font></td>
+			<td style="width:520px;height:59px"><font face="courier new, monospace">Runs console command in server</font></td>
+			<td style="width:456px;height:59px"><pre><font face="courier new, monospace">array( "sv_cmd", "say", "%name% donated!" )</font></pre><font face="courier new, monospace"> </font></td>
+			<td style="width:48px;height:59px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:59px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td style="width:128px;height:43px"><font face="courier new, monospace">cl_cmd</font></td>
+			<td style="width:520px;height:43px"><font face="courier new, monospace">Runs console command for buyer</font></td>
+			<td style="width:456px;height:43px"><pre><font face="courier new, monospace">array( "cl_cmd", "say", "I donated!" ) </font></pre></td>
+			<td style="width:48px;height:43px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:43px"><b style="color:red"><font face="courier new, monospace">false</font></b></td></tr>
+		<tr>
+			<td style="width:128px;height:536px"><font face="courier new, monospace">cancel</font></td>
+			<td style="width:520px;height:536px"><font face="courier new, monospace">Cancels past orders(with delays) from executing. This is most 
+likely to be used with ranks. For example player bought VIP rank
+on your server for a month, after 3 weeks he bought an Admin rank
+before expiring his VIP rank, and he receives his Admin rank. But
+after 1 week his rank is removed because of VIP order(that was
+ordered 4 weeks ago). 
+
+To prevent past orders from executing we run this command to 
+cancel past orders.<br> 
+You can have any number of arguments between 0
+and 6.
+			</font><table border="1">
+				<tbody><tr>
+					<td><span style="font-family:courier new,monospace">excludeself</span></td>
+					<td><span style="font-family:courier new,monospace">Cancel commands excluding the order
+that are executing now. Most of the
+time this is set to true, only on special
+occurence you should have it set to false and you
+must know what you're doing. true/false</span></td>
+				</tr>
+				<tr>
+					<td><span style="font-family:courier new,monospace">serverid</span></td>
+					<td><span style="font-family:courier new,monospace">ServerID where you want to cancel
+the commands in.</span></td>
+				</tr>
+				<tr>
+					<td><font face="courier new, monospace">packageid</font></td>
+					<td><font face="courier new, monospace">Package that you want to cancel.</font></td>
+				</tr>
+				<tr>
+					<td><font face="courier new, monospace">online</font></td>
+					<td><font face="courier new, monospace">Which mode in package do you want to delete<br>Set it to true or false.<br><br>false = offline<br>true = online</font></td>
+				</tr>
+				<tr>
+					<td><font face="courier new, monospace">delay</font></td>
+					<td><font face="courier new, monospace">Remove commands that have this delay.</font></td>
+				</tr>
+				<tr>
+					<td><font face="courier new, monospace">commandid</font></td>
+					<td><font face="courier new, monospace">Specific command that you want to cancel.
+ Any number equal or greater than 1.</font></td>
+				</tr>
+			</tbody></table><font face="courier new, monospace">
+			</font></td>
+			<td style="width:456px;height:536px"><pre><font face="courier new, monospace"><b style="color:red">Example 1</b>
+</font> 
+array( "cancel", <br>    array(<br>        excludeself= true,<br> <span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; </span></span>serverid = "ttt",
+<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; <span>&nbsp;</span></span></span>packageid = 1,
+        online = false,
+        delay = 0,<br><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>commandid = 1<br><span>&nbsp;&nbsp; &nbsp;</span>)
+)<br></pre><pre><font face="courier new, monospace"><b style="color:red">Compact version</b>
+array( "cancel", true, "ttt", 1, false, 0, 1 )
+
+</font></pre><pre><font face="courier new, monospace"><b style="color:red">Example 2
+will cancel any past orders in ttt server</b>
+
+array( "cancel", true, "ttt")</font></pre><pre><b style="font-family:courier new,monospace;color:red">Example 3
+will cancel any past orders on all servers</b><span style="font-family:courier new,monospace">
+
+array( "cancel", true )</span></pre></td>
+			<td style="width:48px;height:536px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td style="width:56px;height:536px"><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr><tr><td>gforum_smf_usergroup</td><td>&nbsp;Updates smf group trough gForum, you have to use group id</td><td>array( "gforum_smf_usergroup", 1)<br></td><td>&nbsp;<b style="color:green"><font face="courier new, monospace">true</font></b></td><td>&nbsp;<b style="color:green"><font face="courier new, monospace">true</font></b></td></tr>
+		
+		</tbody></table><font face="courier new, monospace">
+		</font></pre>
+		
+<h2><font face="courier new, monospace">Variables</font></h2>
+		
+<pre><font face="courier new, monospace">		</font><table border="1">
+		<tbody><tr>
+			<th><font face="courier new, monospace">Variables</font></th>
+			<th><font face="courier new, monospace">Type</font></th>
+			<th><font face="courier new, monospace">Applies to</font></th>
+			<th><font face="courier new, monospace">Description</font></th>
+			<th><font face="courier new, monospace">Online</font></th>
+			<th><font face="courier new, monospace">Offline</font></th>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%name%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Buyer name(steam name).</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%gamename%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Buyer in game name (for example in DarkRP gamemode where
+you can change your names).</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		
+		<tr>
+			<td><font face="courier new, monospace">%name_esc%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">SQL escaped name.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%gamename_esc%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">SQL escaped game name.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		
+		<tr>
+			<td><font face="courier new, monospace">%steamid%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Buyer SteamID.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%steamid64%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Buyer CommunityID
+(<a href="http://steamcommunity.com/profiles/76561198000622892">http://steamcommunity.com/profiles/<b>76561198000622892</b></a>).</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%uniqueid%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Buyer UniqueID.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%userid%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Buyer UserID.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%orderid%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">The id of current order from where executed.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%transactionid%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Paypal transaction id.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">%packageid%</font></td>
+			<td><font face="courier new, monospace">text</font></td>
+			<td><font face="courier new, monospace">print, broadcast, broadcast_omit, sv_cmd, cl_cmd,
+sql, sql_ext</font></td>
+			<td><font face="courier new, monospace">Package id.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">PLAYER</font></td>
+			<td><font face="courier new, monospace">entity</font></td>
+			<td><font face="courier new, monospace">lua</font></td>
+			<td><font face="courier new, monospace">Buyer entity.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:red"><font face="courier new, monospace">false</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">STEAMID</font></td>
+			<td><font face="courier new, monospace">string</font></td>
+			<td><font face="courier new, monospace">lua</font></td>
+			<td><font face="courier new, monospace">Buyer SteamID.</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+		</tr>
+		<tr>
+			<td><font face="courier new, monospace">ORDERDATA</font></td>
+			<td><font face="courier new, monospace">table</font></td>
+			<td><font face="courier new, monospace">lua</font></td>
+			<td><font face="courier new, monospace">Order table. (same structure as in `commands` database, for
+example ORDERDATA.transactionid will give you transactionid)</font></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td>
+			<td><b style="color:green"><font face="courier new, monospace">true</font></b></td></tr></tbody></table></pre>
+<pre><br></pre>
+<pre><div style="font-family:Arial,Verdana,sans-serif;white-space:normal"><pre><pre style="font-size:11px;background-color:rgb(128,128,128);text-align:center;margin-bottom:0px;margin-top:0px"><b><font face="courier new, monospace" size="6">Troubleshooting</font></b></pre></pre></div><div style="font-family:Arial,Verdana,sans-serif;white-space:normal"><pre><table border="1"><tbody><tr><th style="width:487px;height:16px"><font face="courier new, monospace">Error</font></th><th style="width:208px;height:16px"><font face="courier new, monospace">File</font></th><th style="width:242px;height:16px"><font face="courier new, monospace">Cause</font></th><th style="width:256px;height:16px"><font face="courier new, monospace">Fix</font></th></tr><tr><td style="width:487px;height:59px"><span style="font-family:Arial,Verdana,sans-serif;font-size:10pt;white-space:pre-wrap">PHP Warning:  mysqli_stmt_close(): invalid object or resource mysqli_stmt</span><pre style="word-wrap:break-word;white-space:pre-wrap"> in .../donate/ipn.php on line 107</pre></td><td style="width:208px;height:59px"><font face="courier new, monospace">ipn.php
+(logged in ipn_errors.log)</font></td><td style="width:242px;height:59px"><font face="courier new, monospace">Table structure doesn't match 
+in database.</font></td><td style="width:256px;height:59px"><font face="courier new, monospace">Delete "payments" and "commands"
+tables in database.</font></td></tr><tr><td>&nbsp;Steam sign doesn't work.</td><td>&nbsp;index.php</td><td>Ehter curl or streams doesn't
+work correctly.</td><td>Make sure donate url have right
+protocol, sometimes web with 
+http protocol would redirect 
+to https and if that happens 
+you need to change protocol on
+donate url to https. If that
+doesn't work try  switching 
+OPENID_MODE between  'curl' or
+'streams'. If nether of that 
+works, contact your webhost 
+admin to fix curl. (most of the
+time when people do contact their
+webhost admin about this problem,
+it does get fixed)</td></tr><tr><td>&nbsp;Clicking "Next" button brings to Page Not Found.</td><td>&nbsp;index.php</td><td>&nbsp;Wrong DONATE_URL format</td><td>&nbsp;Please make sure you use same
+format as given example. You
+have to include http:// in front
+and end it with slash at the end
+and not file name.
+
+http://example.com/donate/</td></tr><tr><td>&nbsp;Checkout button doesn't work</td><td>&nbsp;index.php</td><td>Domain redirect</td><td>Set DONATE_URL to your webhost ip
+address. If you use port other
+than 80 you should add port next 
+to ip. 
+e.g. 127.0.0.1:8080/donate/
+
+Also try using without any 
+forwarding systems, and use direct
+ip.</td></tr><tr><td>Payments go trough web and adds rows to the database but
+<span>it doesn't execute on servers. </span>
+</td><td><br></td><td><br></td><td>There could be multiple causes:
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px"><tbody><tr><td style="width:60px">
+Mysqloo module is not installed
+correctly, type following command
+in server console.
+
+<font color="#274e13">lua_run require("mysqloo")</font>
+
+and if it returns
+
+<font color="#274e13">[ERROR] lua_run:1: Couldn't load 
+module library!
+</font>
+then you should go Game Server
+Setup section and read step 3.</td></tr><tr><td style="width:60px">
+Type ds_printlogs in server
+console and if it says that it
+has connected to the database
+then it's most likely that&nbsp;
+serverid in lua file doesn't 
+match with the serverid in the
+<b>'execute'</b> array inside PACKAGE
+(not SERVERS) array.</td></tr><tr><td style="width:60px">
+If ds_printlogs returns that it
+failed to connect to the server.
+Read the cause and check if all
+db info matches. If it's still
+doesn't work, then contact webhost
+admin as they might be blocking
+external access. If you're unable
+to enable external access on your
+webhost, then try getting new host
+such as nfoservers.com .</td></tr></tbody></table>
+</td></tr><tr><td><span style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal">[ERROR] lua/autorun/server/donation_</span><span style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal">sy</span><span style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal">stem.lua:32: Couldn't load module library!</span><br style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal"><span style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal">1. require - [C]:-1</span><br style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal"><span style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal">2. unknown - lua/autorun/server/donation_</span><span style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal">sy</span><span style="color:rgb(34,34,34);font-family:arial,sans-serif;white-space:normal">stem.lua:32</span></td><td>&nbsp;<span style="font-family:courier new,monospace;white-space:normal">donation_system.lua</span></td><td>&nbsp;MySQLOO module is not 
+installed correctly </td><td>&nbsp;Make sure you did game server
+setup(step 3) correctly. If you're
+sure you did it correctly,
+contact you game host provider
+to resolve the issue. You should
+include the error when contacting
+them.</td></tr><tr><td>&nbsp;Empty boxes in either Servers or Packages tab</td><td>&nbsp;index.php</td><td>&nbsp;config.php has incorrect
+setup
+
+</td><td>&nbsp;If Servers tab has empty box, go
+to $GAMES array and inside
+game array find `servers` array
+and remove extra server.
+
+ If Packages tab has empty box, go
+to $SERVERS array and inside
+server array find `packages` array
+and remove extra package.
+</td></tr><tr><td>&nbsp;Error while validating data</td><td>&nbsp;success.php</td><td>&nbsp;</td><td>&nbsp;Open ipn_error.log file in your
+webhost and if it says:
+
+cURL error: [35] Unsupported SSL 
+protocol version
+
+This means your webhost have a curl 
+version that has a bug.
+<a href="http://curl.haxx.se/mail/tracker-2014-01/0003.html">http://curl.haxx.se/mail/
+tracker-2014-01/0003.html</a>
+
+You should contact your webhost to
+resolve this issue.</td></tr><tr><td>&nbsp;Sandbox mode works fine, but when I use regular Paypal the
+system wont register payments.</td><td>&nbsp;</td><td>&nbsp;ipn.php didnt register the
+payment</td><td> Sometimes payments goes pending.
+it's hard to determine the reason
+but most of the time its because
+someone pays you in diferent
+currency that is your paypal is
+set to. Try setting same currency
+in config.php that your paypal
+account use.
+
+If it says that transaction went
+completed try linking ipn messages 
+in your paypal settings to the 
+ipn.php file. Normally you don't 
+need to configure ipn settings, but 
+sometimes paypal won't send 
+ipn messages trough notify_url 
+value.</td></tr></tbody></table></pre><p><br></p>
+<div>
+		
+    </div>
+
+</body>
+</html>
