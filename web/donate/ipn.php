@@ -27,8 +27,8 @@ try {
 */
 
 // autofill data from config!
-$cp_merchant_id = '65264e7a9e3a20c7dfd52721da2f3fcf';
-$cp_ipn_secret = 'b893a421C20baf575d8ffD929217271C4335DacBeC5238d62619b15f428Dc457';
+$cp_merchant_id = '';
+$cp_ipn_secret = '';
 // not used as its useless
 $cp_debug_email = ''; 
 
