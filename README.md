@@ -6,7 +6,7 @@ CoinPayments IPN confirmed working.
 # Donation-System (for Garry's Mod, Minecraft, Team Fortress 2, Counter-Strike, SourceMod)
 its simple, and it works with php 7/6/5
  
-
+[![Chat](https://img.shields.io/discord/251369607644971019.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xPrKvt9)
 ----
 ## Features:
 * CoinPayments Support! accept EVERY SINGLE CRYPTOCURRENCY!!
