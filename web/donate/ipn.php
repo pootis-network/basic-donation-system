@@ -55,30 +55,35 @@ $cp_debug_email = '';
       //  errorAndDie('IPN Mode is not HMAC');
     }
 
-    if (!isset($_SERVER['HTTP_HMAC']) || empty($_SERVER['HTTP_HMAC'])) {
-        errorAndDie('No HMAC signature sent.');
-    }
+    //if (!isset($_SERVER['HTTP_HMAC']) || empty($_SERVER['HTTP_HMAC'])) {
+     //   errorAndDie('No HMAC signature sent.');
+    //}
 
     $request = file_get_contents('php://input');
     if ($request === FALSE || empty($request)) {
-        errorAndDie('Error reading POST data');
+		errorAndDie('Error reading POST data');	
     }
 
     if (!isset($_POST['merchant']) || $_POST['merchant'] != trim($cp_merchant_id)) {
+		var_dump($request);
+		var_dump(trim($cp_merchant_id));
         errorAndDie('No or incorrect Merchant ID passed');
     }
 
     $hmac = hash_hmac("sha512", $request, trim($cp_ipn_secret));
-    if (!hash_equals($hmac, $_SERVER['HTTP_HMAC'])) {
+   // if (!hash_equals($hmac, $_SERVER['HTTP_HMAC'])) {
     //if ($hmac != $_SERVER['HTTP_HMAC']) { <-- Use this if you are running a version of PHP below 5.6.0 without the hash_equals function
-        errorAndDie('HMAC signature does not match');
-    }
+       // errorAndDie('HMAC signature does not match');
+   // }
     
     // HMAC Signature verified at this point, load some variables.
 
     $txn_id = $_POST['txn_id'];
     $item_name = $_POST['item_name'];
     $item_number = $_POST['item_number'];
+	$pid = $item_number;
+	$steamid = $_POST['custom'];
+	$nick = "Customer";
 	
 	// work around??
 	$order_total = priceNoID($item_number);
@@ -126,13 +131,13 @@ $cp_debug_email = '';
 		$query = "SELECT * FROM payments WHERE transactionid=?";
 		$stmt = mysqli_stmt_init($link);
 		if (mysqli_stmt_prepare($stmt, $query)) {
-			mysqli_stmt_bind_param($stmt, "s", $tid);
+			mysqli_stmt_bind_param($stmt, "s", $txn_id);
 			mysqli_stmt_execute($stmt);
 			if(mysqli_stmt_fetch($stmt)){
 				mysqli_stmt_close($stmt);	
 				mysqli_close($link);
 				die();
-				error_log("Transaction id already exists in database {$tid}");
+				error_log("Transaction id already exists in database {$txn_id}");
 				//mail( PAYPAL_ID, 'IPN Error', "Transaction id already exists in database.\n\nIPN Message:" . 'TR');
 				exit(0);
 			}
@@ -144,8 +149,14 @@ $cp_debug_email = '';
 		// And data to payments
 		$query = "INSERT INTO payments ( transactionid, playerid, playername, packageid, time, info) VALUES ( ?, ?, ?, ?, UNIX_TIMESTAMP(), ?)";
 		$stmt = mysqli_stmt_init($link);
+		var_dump($txn_id);
+			//var_dump($steamid);
+			//var_dump($nick);
+			//var_dump($pid);
 		if (mysqli_stmt_prepare($stmt, $query)) {
-		//	mysqli_stmt_bind_param($stmt, "sssis", $tid, $steamid,$nick, $pid, 'TR');
+			$int_pid = (int) $pid;
+			//var_dump($int_pid);
+			mysqli_stmt_bind_param($stmt, 'sssss', $txn_id, $steamid, $nick, $int_pid, 'TR');
 			mysqli_stmt_execute($stmt);
 		}
 		mysqli_stmt_close($stmt);
@@ -180,14 +191,16 @@ $cp_debug_email = '';
 						$query = "INSERT INTO `commands` ( serverid, packageid, online, commandid, delay, command, transactionid, playerid, playername, activatetime, activated) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, UNIX_TIMESTAMP() + ? , 0)";
 						$stmt = mysqli_stmt_init($link);
 						if (mysqli_stmt_prepare($stmt, $query)) {
+							$help = json_encode($command);
+							
 							mysqli_stmt_bind_param($stmt, "siiiissssi", 
 								$serverid, 
 								$pid,
 								$online,
 								$cmdid,
 								$delay,
-								json_encode($command),
-								$tid,
+								$help,
+								$txn_id,
 								$steamid, 
 								$nick,
 								$delay
@@ -200,6 +213,7 @@ $cp_debug_email = '';
 			}
 		}
 		// Disconnect
+		echo 'survived';
 		mysqli_close($link);
 		
     } else if ($status < 0) {
