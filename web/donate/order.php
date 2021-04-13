@@ -104,7 +104,7 @@
 			function newPopup(url) {
 				popupWindow = window.open(
 				url,'popUpWindow','height=200,width=400,left=10,top=10,resizable=no,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
-			};
+			}
 			
 			$(document).ready(function() {
 				enableNext(false);
@@ -132,10 +132,11 @@
 					$authserver = bcsub($communityid, '76561197960265728') & 1;
 					$authid = (bcsub($communityid, '76561197960265728')-$authserver)/2;
 					$steamid = "STEAM_0:$authserver:$authid";
-					
-					$Steam64 = str_replace("http://steamcommunity.com/openid/id/", "", $_SESSION['T2SteamAuth']);
+
+                    $Steam64 = str_replace("http://steamcommunity.com/openid/id/", "", $_SESSION['T2SteamAuth']);
 					$Profile = json_decode(file_get_contents("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".STEAM_API."&steamids={$Steam64}"))->response->players[0];
-				?>
+
+					?>
 					
 					<table border="1">
 					<tr>
@@ -148,7 +149,7 @@
 					</tr>
 					<tr>
 					<td><b>SteamID64</b></td>
-					<td><a href="http://steamcommunity.com/profiles/<?php echo $communityid; ?>"><?php echo $communityid; ?></a></td>
+					<td><a href="http://steamcommunity.com/profiles/<?php echo $Steam64; ?>"><?php echo $Steam64; ?></a></td>
 					</tr>
 					<td colspan=2>&nbsp</td>
 					<tr>
@@ -167,8 +168,9 @@
 					By submitting this order you agree to our <a href="JavaScript:newPopup('tos.html');">Terms of Service</a>.
 					<br/>
 					<br/>
+                    <?php if(ENABLE_PAYPAL){?>
 					<form action='<?php echo PAYPAL_URL; ?>' method='post' name='frmPayPal1'>
-						<input type='hidden' name='business' value='<?php 
+						<input type='hidden' name='business' value='<?php
 							if(PAYPAL_SANDBOX){
 								echo PAYPAL_ID_SANDBOX;
 							}else{
@@ -190,7 +192,8 @@
 
 						<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-					</form> 
+					</form>
+                    <?php }?>
 				<?php }?>
 				<br/>
 				</center>

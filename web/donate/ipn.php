@@ -26,9 +26,9 @@ try {
 }
 */
 
-// autofill data from config!
-$cp_merchant_id = '';
-$cp_ipn_secret = '';
+// if you were looking to install the Coinpayments api keys here,
+// i moved keys to config.php!
+
 // not used as its useless
 $cp_debug_email = ''; 
 
@@ -136,7 +136,7 @@ $cp_debug_email = '';
 			if(mysqli_stmt_fetch($stmt)){
 				mysqli_stmt_close($stmt);	
 				mysqli_close($link);
-				die();
+				die("Transaction id already exists in database!");
 				error_log("Transaction id already exists in database {$txn_id}");
 				//mail( PAYPAL_ID, 'IPN Error', "Transaction id already exists in database.\n\nIPN Message:" . 'TR');
 				exit(0);
@@ -156,7 +156,10 @@ $cp_debug_email = '';
 		if (mysqli_stmt_prepare($stmt, $query)) {
 			$int_pid = (int) $pid;
 			//var_dump($int_pid);
-			mysqli_stmt_bind_param($stmt, 'sssss', $txn_id, $steamid, $nick, $int_pid, 'TR');
+
+            // scriptis' idea to fix this shit
+            $scriptis_variable = 'TR';
+			mysqli_stmt_bind_param($stmt, 'sssss', $txn_id, $steamid, $nick, $int_pid, $scriptis_variable);
 			mysqli_stmt_execute($stmt);
 		}
 		mysqli_stmt_close($stmt);
@@ -212,6 +215,7 @@ $cp_debug_email = '';
 				}
 			}
 		}
+
 		// Disconnect
 		echo 'survived';
 		mysqli_close($link);

@@ -87,6 +87,7 @@
 	
     // THIS METHOD BETTER WORK Now
 	$steamid = SteamIDTo32($Profile->steamid);
+    $steamid64 = $Profile->steamid;
 ?>
 	
 	<table border="1" style="border:1px solid black; border-collapse:collapse;">
@@ -100,7 +101,7 @@
 	</tr>
 	<tr>
 	<td><b>SteamID64</b></td>
-	<td><a href="http://steamcommunity.com/profiles/<?php echo $communityid; ?>"><?php echo $communityid; ?></a></td>
+	<td><a href="http://steamcommunity.com/profiles/<?php echo $steamid64; ?>"><?php echo $steamid64; ?></a></td>
 	</tr>
 	<td colspan=2>&nbsp</td>
 	<tr>
@@ -119,6 +120,7 @@
 	By submitting this order you agree to our <a href="javascript:window.open('tos.html','popUpWindow','height=200,width=400,left=10,top=10,resizable=no,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');">Terms of Service</a>.
 	<br/>
 	<br/>
+    <?php if(ENABLE_PAYPAL){?>
 	<form action='<?php echo PAYPAL_URL; ?>' method='post' name='frmPayPal1'>
 		<input type='hidden' name='business' value='<?php 
 			if(PAYPAL_SANDBOX){
@@ -147,8 +149,8 @@
 		<input type='hidden' name='notify_url' value='<?php echo DONATE_URL; ?>ipnPP.php'>
 
 		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-	</form> 
-	
+	</form>
+    <?php }?>
 	<form action="https://www.coinpayments.net/index.php" method="post">
 	<input type="hidden" name="cmd" value="_pay">
 	<input type="hidden" name="reset" value="1">
