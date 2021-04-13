@@ -185,7 +185,7 @@
 						<input type='hidden' name='no_shipping' value='1'>
 						<input type='hidden' name='currency_code' value='<?php echo PAYPAL_CURRENCY;?>'>
 						<input type='hidden' name='handling' value='0'>
-						<input type='hidden' name='custom' value='<?php echo $communityid;?>'>
+						<input type='hidden' name='custom' value='<?php echo $Steam64;?>'>
 						<input type='hidden' name='cancel_return' value='<?php echo DONATE_URL; ?>'>
 						<input type='hidden' name='return' value='<?php echo DONATE_URL; ?>success.php'>
 						<input type='hidden' name='notify_url' value='<?php echo DONATE_URL; ?>ipn.php'>

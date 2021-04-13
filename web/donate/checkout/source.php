@@ -143,7 +143,7 @@
 		<input type='hidden' name='no_shipping' value='1'>
 		<input type='hidden' name='currency_code' value='<?php echo PAYPAL_CURRENCY;?>'>
 		<input type='hidden' name='handling' value='0'>
-		<input type='hidden' name='custom' value='<?php echo $communityid;?>'>
+		<input type='hidden' name='custom' value='<?php echo $steamid;?>'>
 		<input type='hidden' name='cancel_return' value='<?php echo DONATE_URL; ?>'>
 		<input type='hidden' name='return' value='<?php echo DONATE_URL; ?>success.php'>
 		<input type='hidden' name='notify_url' value='<?php echo DONATE_URL; ?>ipnPP.php'>
@@ -155,14 +155,14 @@
 	<input type="hidden" name="cmd" value="_pay">
 	<input type="hidden" name="reset" value="1">
 	<input type="hidden" name="want_shipping" value="0">
-	<input type="hidden" name="merchant" value="65264e7a9e3a20c7dfd52721da2f3fcf">
+	<input type="hidden" name="merchant" value="<?php echo COINPAYMENTS_API_MERCHANTID; ?>">
 	<input type="hidden" name="currency" value="USD">
 	<input type="hidden" name="amountf" value='<?php echo price($pid,$steamid);?>' >
 	<input type='hidden' name='item_number' value='<?php echo $pid;?>'>
 	<input type="hidden" name="item_name" value='<?php echo $PACKAGES[$pid]["buytitle"];?>'>		
 	<input type="hidden" name="allow_extra" value="0">	
 	<input type="hidden" name="success_url" value='<?php echo DONATE_URL; ?>success.php'>	
-	<input type="hidden" name="cancel_url" value="http://poot.ueuo.com/">	
+	<input type="hidden" name="cancel_url" value="<?php echo DONATE_URL; ?>">
 	<input type='hidden' name='ipn_url' value='<?php echo DONATE_URL; ?>ipn.php'>
 	<input type="image" src="https://www.coinpayments.net/images/pub/buynow-med.png" alt="Buy Now with CoinPayments.net">
 </form>
