@@ -1,25 +1,24 @@
 ## ⚠️Warning⚠️
 
-Paypal IPN untested,
-CoinPayments IPN confirmed working.
+Paypal IPN does not work,
+CoinPayments IPN works.
 
-# Donation-System (for Garry's Mod, Minecraft, Team Fortress 2, Counter-Strike, SourceMod)
+# Donation-System (for Garry's Mod, Minecraft, Team Fortress 2, Counter-Strike, SourceMod) [![Chat](https://img.shields.io/discord/251369607644971019.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xPrKvt9)
+
 its simple, and it works with php 7/6/5
- 
-[![Chat](https://img.shields.io/discord/251369607644971019.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xPrKvt9)
-----
+ ----
 ## Features:
 * CoinPayments Support! accept EVERY SINGLE CRYPTOCURRENCY!!
 
 
-* Steam OpenID login (eliminates user error)
+* Steam login (eliminates user error)
 * gForum(smf) group support
 * Extremely lightweight on the server! only 4 MB!
 * Ranks (either permanent or timed for any admin mod you have, no third party addon required).
-* SourceMod support (you can use with Counter-Strike or Team-Fortress games)
+* SourceMod support (works with Counter-Strike or Team-Fortress games)
 * Global packages (one purchase will apply on multiple servers)
 
-* Most configuration is done in one config file, no need to go through different hosts or files to configure the system.
+* Config is in 1 file
 * Support for other games, even if you have only Garry&#039;s Mod servers, you might want to expand your servers to other games as the community gets bigger.
 * Security in mind. (This is not SQL injectable)
 
@@ -37,6 +36,5 @@ based off of https://github.com/h3xcat/gmod-donation-system
 ## Images (outdated design)
 ![Alt text](http://puu.sh/3zOT7.png)
 ![Alt text](http://puu.sh/3zOTW.png)
-![Alt text](http://puu.sh/3zOQw.png)
-![Alt text](http://puu.sh/3zOS7.png)
+
 
