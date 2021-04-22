@@ -83,7 +83,36 @@ $cp_debug_email = '';
     $item_number = $_POST['item_number'];
 	$pid = $item_number;
 	$steamid = $_POST['custom'];
-	$nick = "Customer";
+
+function IsSteamID32($input){
+    return stristr(trim($input), 'STEAM_0:');
+}
+
+function SteamIDTo64($steamid32){
+    $steamid32 = trim($steamid32);
+    if($steamid32 == 'STEAM_ID_LAN' || $steamid32 == 'BOT') {
+        die("Cannot convert SteamID \"$steamid32\" to a community ID.");
+    }
+    if(!IsSteamID32($steamid32)){
+        die("SteamID \"$steamid32\" doesn't have the correct format.");
+    }
+
+    $steamid32 = explode(':', substr($steamid32, 6));
+    $steamid32 = $steamid32[1] + $steamid32[2] * 2 + 1197960265728;
+
+    return '7656' . $steamid32;
+}
+
+    $cid = SteamIDTo64($steamid);
+
+
+	$ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".STEAM_API."&steamids={$cid}");
+    $data = curl_exec($ch);
+    curl_close($ch);
+    $Profile = json_decode($data)->response->players[0];
+    $nick = $Profile->personaname;
 	
 	// work around??
 	$order_total = priceNoID($item_number);

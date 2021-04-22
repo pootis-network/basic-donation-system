@@ -157,10 +157,12 @@
 	<input type="hidden" name="want_shipping" value="0">
 	<input type="hidden" name="merchant" value="<?php echo COINPAYMENTS_API_MERCHANTID; ?>">
 	<input type="hidden" name="currency" value="USD">
-	<input type="hidden" name="amountf" value='<?php echo price($pid,$steamid);?>' >
-	<input type='hidden' name='item_number' value='<?php echo $pid;?>'>
+    <input type="hidden" name="amountf" value='<?php echo price($pid,$steamid);?>' >
+    <input type="hidden" name="ipn_mode" value='button' >
+    <input type='hidden' name='item_number' value='<?php echo $pid;?>'>
 	<input type="hidden" name="item_name" value='<?php echo $PACKAGES[$pid]["buytitle"];?>'>		
-	<input type="hidden" name="allow_extra" value="0">	
+	<input type="hidden" name="allow_extra" value="0">
+    <input type='hidden' name='custom' value='<?php echo $steamid;?>'>
 	<input type="hidden" name="success_url" value='<?php echo DONATE_URL; ?>success.php'>	
 	<input type="hidden" name="cancel_url" value="<?php echo DONATE_URL; ?>">
 	<input type='hidden' name='ipn_url' value='<?php echo DONATE_URL; ?>ipn.php'>
