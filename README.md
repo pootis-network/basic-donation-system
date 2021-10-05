@@ -4,6 +4,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/pootis-network/basic-donation-system?logo=github)
 ![GitHub](https://img.shields.io/github/license/pootis-network/basic-donation-system)
 ![PHP Version Requirement](https://img.shields.io/badge/Required%20PHP%20Version-%3E=6-informational)
+[![CodeFactor](https://www.codefactor.io/repository/github/pootis-network/basic-donation-system/badge)](https://www.codefactor.io/repository/github/pootis-network/basic-donation-system)
 
 This repo is based off of https://github.com/h3xcat/gmod-donation-system
 ## Features:
