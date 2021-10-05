@@ -51,14 +51,14 @@
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.4pt;
-	word-spacing: 0pt;
+	word-spacing: 0;
 }
 .accordionButton.on{
 	color: #0073BF !important;	
-	-moz-border-radius-bottomright: 0px 0px !important;
-	border-bottom-right-radius: 0px 0px !important;
-	-moz-border-radius-bottomleft: 0px 0px !important;
-	border-bottom-left-radius: 0px 0px !important;
+	-moz-border-radius-bottomright: 0 0 !important;
+	border-bottom-right-radius: 0 0 !important;
+	-moz-border-radius-bottomleft: 0 0 !important;
+	border-bottom-left-radius: 0 0 !important;
 }	
 	
 .accordionContent {	
@@ -106,7 +106,7 @@ body {
 	background: 
 	#202020;
 	width: 800px;
-	padding-left: 0px;
+	padding-left: 0;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	-moz-border-radius-topright: 15px 15px;
@@ -156,7 +156,7 @@ body {
 	rgba(0, 0, 0, 1) 0%,
 	rgba(229, 229, 229, 1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
-	border-radius: 10px 10px;
+	border-radius: 10px;
 	color: 
 	#0073BF;
 	width: 179px;
@@ -249,13 +249,13 @@ body {
     padding:0.2em;
     display:block;
 	
-	-moz-border-radius: 4px 4px;
-	border-radius: 4px 4px;
-	-moz-border-radius: 4px 4px;
-	border-radius: 4px 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 .button a:hover {
-    background-color:#A7A7A7;;;
+    background-color:#A7A7A7;
     color:#444;
     border-top:0.1em solid #777;
     border-left:0.1em solid #777;
@@ -264,10 +264,10 @@ body {
     padding:0.2em;
     margin: 0.2em;
 	
-	-moz-border-radius: 4px 4px;
-	border-radius: 4px 4px;
-	-moz-border-radius: 4px 4px;
-	border-radius: 4px 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 .button-disabled  a{
     background-color:#eee !important;
@@ -335,7 +335,7 @@ margin-right: -.3em;
 	float: right;
 	
 	width: 800px;
-	padding-left: 0px;
+	padding-left: 0;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	-moz-border-radius-topright: 5px 5px;
@@ -382,13 +382,13 @@ margin-right: -.3em;
 	background-position: -96px -128px;
 	text-indent: -99999px;
 }
-.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0; padding: 1px; height: 18px; }
 .ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
 .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
 	
  }
 .ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
-.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0; background-image: none; margin: .5em 0 0; padding: .3em 1em .5em .4em; }
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
 .ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
 .ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
