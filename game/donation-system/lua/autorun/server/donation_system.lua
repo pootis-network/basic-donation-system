@@ -9,7 +9,7 @@ local CHAT_CMD_COMMANDS = {"!donate", "/donate"}
 local CHAT_CMD_URL = "http://example.com/donate/"
 
 ---------------------------------------------------------------
--- Leave everything bellow, unless you know what you're doing -
+-- Leave everything below, unless you know what you're doing  -
 ---------------------------------------------------------------
 
 DonationSystem = { }
