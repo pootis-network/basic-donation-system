@@ -117,7 +117,7 @@
 	
 	</table>
 	<br/>
-	By submitting this order you agree to our <a href="javascript:window.open('tos.html','popUpWindow','height=200,width=400,left=10,top=10,resizable=no,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');">Terms of Service</a>.
+	By submitting this order you agree to our <a href="" onclick="javascript:window.open('tos.html','popUpWindow','height=200,width=400,left=10,top=10,resizable=no,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');">Terms of Service</a>.
 	<br/>
 	<br/>
     <?php if(ENABLE_PAYPAL){?>

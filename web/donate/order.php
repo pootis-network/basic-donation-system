@@ -162,10 +162,9 @@
 					<tr>
 					<td><b>Price</b></td>
 					<td><?php echo $PACKAGES[$pid]["price"]." ".PAYPAL_CURRENCY; ?></td>
-					
 					</table>
 					<br/>
-					By submitting this order you agree to our <a href="JavaScript:newPopup('tos.html');">Terms of Service</a>.
+					By submitting this order you agree to our <a href="" onclick="JavaScript:newPopup('tos.html');">Terms of Service</a>.
 					<br/>
 					<br/>
                     <?php if(ENABLE_PAYPAL){?>
