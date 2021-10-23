@@ -27,6 +27,21 @@ if(PAYPAL_SANDBOX){
 	$paypal_id = $PACKAGES[$pid]['paypal_id'];
 }
 
+//---------------- FUNCTION FOR COMMUNITY ID --------------------------
+function getCommunityId($steamX_X_XXXX){
+    $accountId = 0;
+	
+	//takes in STEAM_X:X:XXXXXXXXXXX... outputs community id
+
+    if (preg_match('/^STEAM_[0-9]:([0-9]):([0-9]+)$/i', $steamX_X_XXXX, $matches)) {
+        $accountId = $matches[1] + ($matches[2] * 2);
+    }
+    if (preg_match('/^\[U:[0-9]:([0-9]+)\]$/i', $steamX_X_XXXX, $matches)) {
+        $accountId = $matches[1];
+    }
+	return gmp_strval(gmp_add('76561197960265728', $accountId));
+} 
+// ------------------------------------------------------------------
 
 $verified = $listener->processIpn();
 if ($verified) {
@@ -35,9 +50,13 @@ if ($verified) {
 	$price=$_POST['mc_gross'];
 	
 	// Convert comunity id to steamdid and gather data
-	$authserver = bcsub($cid, '76561197960265728') & 1;
-	$authid = (bcsub($cid, '76561197960265728')-$authserver)/2;
-	$steamid = "STEAM_0:$authserver:$authid";
+	//$authserver = bcsub($cid, '76561197960265728') & 1;
+	//$authid = (bcsub($cid, '76561197960265728')-$authserver)/2;
+	//$steamid = "STEAM_0:$authserver:$authid";
+	
+	// ---------THIS IS BETTER---------------
+	$steamid = getCommunityId($cid);
+	// -------------------------------------
 	
 	$ch = curl_init(); 
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
