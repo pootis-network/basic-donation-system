@@ -1,8 +1,0 @@
-[22-Mar-2020 03:51:58 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 13
-[22-Mar-2020 03:51:58 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 19
-[22-Mar-2020 03:52:02 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 13
-[22-Mar-2020 03:52:02 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 19
-[22-Mar-2020 03:52:25 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 13
-[22-Mar-2020 03:52:25 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 19
-[22-Mar-2020 03:52:28 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 13
-[22-Mar-2020 03:52:28 Europe/Berlin] PHP Notice:  Undefined variable: PAYMENT_CURRENCY in C:\xampp2\htdocs\gmod-donation-system-master\web\donate\config.php on line 19

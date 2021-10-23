@@ -162,3 +162,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,phpstorm+all,macos
 config.php
+web/donate/index_errors.log
+web/donate/ipn_errors.log
