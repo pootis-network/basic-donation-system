@@ -28,21 +28,6 @@ if (PAYPAL_SANDBOX) {
 }
 
 //---------------- FUNCTION FOR COMMUNITY ID --------------------------
-<<<<<<< Updated upstream
-function getCommunityId($steamX_X_XXXX){
-    $accountId = 0;
-	
-	//takes in STEAM_X:X:XXXXXXXXXXX... outputs community id
-
-    if (preg_match('/^STEAM_[0-9]:([0-9]):([0-9]+)$/i', $steamX_X_XXXX, $matches)) {
-        $accountId = $matches[1] + ($matches[2] * 2);
-    }
-    if (preg_match('/^\[U:[0-9]:([0-9]+)\]$/i', $steamX_X_XXXX, $matches)) {
-        $accountId = $matches[1];
-    }
-	return gmp_strval(gmp_add('76561197960265728', $accountId));
-} 
-=======
 function getCommunityId($steamX_X_XXXX)
 {
     $accountId = 0;
@@ -58,52 +43,10 @@ function getCommunityId($steamX_X_XXXX)
     return gmp_strval(gmp_add('76561197960265728' ,$accountId));
 }
 
->>>>>>> Stashed changes
 // ------------------------------------------------------------------
 
 $verified = $listener->processIpn();
 if ($verified) {
-<<<<<<< Updated upstream
-	$tid = $_POST['txn_id'];
-	$cid = $_POST['custom'];
-	$price=$_POST['mc_gross'];
-	
-	// Convert comunity id to steamdid and gather data
-	//$authserver = bcsub($cid, '76561197960265728') & 1;
-	//$authid = (bcsub($cid, '76561197960265728')-$authserver)/2;
-	//$steamid = "STEAM_0:$authserver:$authid";
-	
-	// ---------THIS IS BETTER---------------
-	$steamid = getCommunityId($cid);
-	// -------------------------------------
-	
-	$ch = curl_init(); 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	curl_setopt($ch, CURLOPT_URL, "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".STEAM_API."&steamids={$cid}"); 
-	$data = curl_exec($ch); 
-	curl_close($ch); 
-	$Profile = json_decode($data)->response->players[0];
-	$nick = $Profile->personaname;
-	
-	//Check if payment valid
-	if (	
-		$_POST['payment_status'] == "Completed" // Is payment completed?
-		&& strtolower( $_POST['receiver_email'] ) == strtolower( $paypal_id ) // Was payment sent to correct location?
-		&& ipnPriceValidation($pid, $steamid, $price) // Does price match? (ipnPriceValidation function is defined in config.php)
-		&& $_POST['mc_currency'] == PAYPAL_CURRENCY) // Does currency match?
-		{
-
-		// Connect to database
-		$link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-		if (!$link) {
-			error_log("Failed to connect to the database: " . mysqli_connect_error());
-			mail( PAYPAL_ID, 'IPN Error', "Failed to connect to the database: " . mysqli_connect_error() . "\n\nIPN Message:" . $listener->getTextReport());
-			exit(0);
-		}
-
-		// Create payments table if doesnt exist
-		$query = "CREATE TABLE IF NOT EXISTS payments (  
-=======
     $tid = $_POST['txn_id'];
     $cid = $_POST['custom'];
     $price = $_POST['mc_gross'];
@@ -143,7 +86,6 @@ if ($verified) {
 
         // Create payments table if doesnt exist
         $query = "CREATE TABLE IF NOT EXISTS payments (  
->>>>>>> Stashed changes
 		transactionid varchar(125) NOT NULL, 
 		playerid varchar(40) NOT NULL, 
 		playername varchar(40) NOT NULL,
@@ -249,9 +191,5 @@ if ($verified) {
         mail(PAYPAL_ID ,'Invalid Product Info' ,$error);
     }
 } else {
-<<<<<<< Updated upstream
-    mail( PAYPAL_ID , 'Invalid IPN Validation', $listener->getTextReport());
-=======
     mail(PAYPAL_ID ,'Invalid IPN Validation' ,$listener->getTextReport());
->>>>>>> Stashed changes
 }
