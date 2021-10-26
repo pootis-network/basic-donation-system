@@ -165,6 +165,8 @@
     <input type='hidden' name='custom' value='<?php echo $steamid;?>'>
 	<input type="hidden" name="success_url" value='<?php echo DONATE_URL; ?>success.php'>	
 	<input type="hidden" name="cancel_url" value="<?php echo DONATE_URL; ?>">
+    <input type="hidden" name="first_name" value="<?php echo $Profile->personaname; ?>">
+    <input type="hidden" name="last_name" value="N/A">
 	<input type='hidden' name='ipn_url' value='<?php echo DONATE_URL; ?>ipn.php'>
 	<input type="image" src="https://www.coinpayments.net/images/pub/buynow-med.png" alt="Buy Now with CoinPayments.net">
 </form>
