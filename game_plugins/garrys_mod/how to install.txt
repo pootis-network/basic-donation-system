@@ -1,0 +1,20 @@
+Welcome and thank you for using Basic Donation System!
+This tutorial will show you how to setup the Garry's Mod plugin.
+
+First, ensure your hosting provider supports the mySQLoo module (most of them support mySQLoo as of 2021)
+then, once you install mySQLoo on the server, install the addon and configure the following:
+
+Head to donation-system\lua\autorun\server and edit the settings in donation_system.lua:
+
+anything with DB_ is mySQL related,
+DB_HOST is the SQL server to connect to, ensure the server is running in port 3306
+DB_USERNAME is the username of the SQL server to login with
+DB_PASSWORD is the password of the SQL server to login with
+
+SERVER_ID is the unique id you can assign to the server, it is used to identify the Garry's Mod server.
+
+You can enable or disable the donation chat commands by editing CHAT_CMD_ENABLE to either true or false.
+Dont forget to edit CHAT_CMD_URL to your donation page first before enabling the chat commands!
+
+
+DONT TOUCH ANYTHING BELOW THE CHAT COMMANDS UNLESS YOU KNOW WHAT YOU ARE DOING!
