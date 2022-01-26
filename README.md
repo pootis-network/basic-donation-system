@@ -1,4 +1,5 @@
 ![Header Image](https://github.com/pootis-network/basic-donation-system/raw/master/header_image.png)
+## WARNING: The Paypal IPN does not work! ([see issue #6](https://github.com/pootis-network/basic-donation-system/issues/6))
 
 [![Join the Discord Chat](https://img.shields.io/discord/251369607644971019.svg?label=Join+Pootis+Network&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xPrKvt9)
 ![GitHub repo size](https://img.shields.io/github/repo-size/pootis-network/basic-donation-system?logo=github)
