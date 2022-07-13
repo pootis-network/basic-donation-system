@@ -1,4 +1,6 @@
 ![Header Image](https://github.com/pootis-network/basic-donation-system/raw/master/header_image.png)
+## WARNING: The CoinPayments IPN WILL NO LONGER WORK FOR U.S.A MERCHANTS ([SEE THIS LINK... NOW!](https://www.coinpayments.net/help-restricted))
+Consequentally, this means i can no longer work on this code anymore, i will be accepting pull requests that allow alternative crypto-ipn solutions.
 ## WARNING: The Paypal IPN does not work! ([see issue #6](https://github.com/pootis-network/basic-donation-system/issues/6))
 
 [![Join the Discord Chat](https://img.shields.io/discord/251369607644971019.svg?label=Join+Pootis+Network&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xPrKvt9)
